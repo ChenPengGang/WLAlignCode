@@ -36,47 +36,6 @@ class GraphConvolution(Module):
         else:
             return output
 
-class GraphDecoder(Module):
-    def __init__(self,in_feature,out_feature):
-        super(GraphDecoder, self).__init__()
-        self.in_feature=in_feature
-        self.out_feature=out_feature
-        self.decoder=nn.Linear(in_feature,out_feature)
-
-    def forward(self,embedding):
-        x=self.decoder(embedding)
-        return x
-
-class ProcessUnit(torch.nn.Module):
-    def __init__(self,input_dim,emb_dim,device):
-        super(ProcessUnit, self).__init__()
-        self.encoder = GraphConvolution(input_dim, emb_dim)
-        self.decoder = GraphDecoder(emb_dim,input_dim)
-        self.device=device
-
-    def rebuild_onehot(self,remap):
-        emb_zero = torch.zeros_like(remap)
-        emb_one = torch.ones_like(remap)
-        result=torch.where(remap > 0, emb_one, emb_zero)
-
-        return result
-
-    # def rebuildEmb(self,emb_zero, remap):
-    #
-    #     for ring, index in zip(emb_zero, rebuild_decode):
-    #         ring[index] = 1
-
-    def forward(self, x, edge_index,layers):
-        label_embeddings=[]
-        label_labels=[]
-        for i in range(layers):
-            embedding = self.encoder(x, edge_index)
-            label_embeddings.append(embedding)
-            re_map = self.decoder(embedding)
-            label_labels.append(re_map)
-            x=self.rebuild_onehot(re_map)
-
-        return label_embeddings,label_labels
 
 class AggregateLabel(torch.nn.Module):
     def __init__(self,input_dim,emb_dim,device):
@@ -94,15 +53,3 @@ class AggregateLabel(torch.nn.Module):
             x=one_layer_label
 
         return label_list
-
-class LabelEncoder(torch.nn.Module):
-    def __init__(self,input_dim,emb_dim):
-        super(LabelEncoder, self).__init__()
-        self.encoder = GraphConvolution(input_dim, emb_dim)
-        self.map = nn.Linear(emb_dim,emb_dim)
-
-    def forward(self, x, edge_index):
-        embedding = self.encoder(x, edge_index)
-        embedding = F.normalize(embedding)
-        embedding = self.map(embedding)
-        return embedding

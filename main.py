@@ -116,9 +116,6 @@ while(True):
         candate_pair = list(set(candate_pair))
         all_candate.extend(candate_pair)
         all_candate = list(set(all_candate))
-        # all_candate = remark(all_candate, network)
-        # all_candate = list(set(all_candate))
-        test_candate_pair(candate_pair, 'can:', test_anchor_list, network.mark_pair)
 
         # embedding_I, network_all = trainerI.train_anchor(network_tmp, all_candate, layers_label[0],pre_layer_label, nx_G,network.mark_pair,0)
         #
@@ -138,7 +135,6 @@ while(True):
         candate_pair = list(set(candate_pair))
         all_candate = remark(all_candate, network)
         # all_candate = list(set(all_candate))
-        test_candate_pair(all_candate, 'can:', test_anchor_list, network.mark_pair)
 
         all_candate.extend(candate_pair)
 

@@ -265,72 +265,7 @@ def get_candate_pair_self(layers_embedding,network):
 
     return result_list,[],result_old_list
 
-def Active_choice(candate_pair,network,all_candate_dict,neg_result,top):
-    candates_f = []
-    candates_t = []
-    for cand in candate_pair:
-        if cand in neg_result:
-            continue
-        pair = cand.split('-')
-        candates_f.append(pair[0])
-        candates_t.append(pair[1])
 
-    score_dict = dict()
-    for f, t in zip(candates_f, candates_t):
-        score = 0
-        neighbor_f = list(network.G.neighbors(f))
-        neighbor_t = list(network.G.neighbors(t))
-        for node in neighbor_f:
-            if node in neighbor_t:
-                score += 1
-        # score=(len(list(network.G.neighbors(f)))+len(list(network.G.neighbors(t))))/2
-        score_dict[f + '-' + t] = score
-        if (f+'-'+t) not in all_candate_dict.keys():
-            all_candate_dict[f + '-' + t] = score
-        else:
-            score_dict[f + '-' + t] += all_candate_dict[f + '-' + t]
-            all_candate_dict[f + '-' + t] += score
-
-    sorted_list = sorted(score_dict.items(), key=lambda item: item[1], reverse=True)
-
-    resutl_dict=dict()
-    for sortedx in sorted_list[:top]:
-        resutl_dict[sortedx[0]]=sortedx[1]
-    resutl_dict_neg = dict()
-    for sortedx in sorted_list[-(top+1):-1]:
-        resutl_dict_neg[sortedx[0]] = sortedx[1]
-    return resutl_dict,resutl_dict_neg
-
-def Negantive_choice(candate_pair,network,all_candate_dict):
-    candates_f = []
-    candates_t = []
-    for cand in candate_pair:
-        pair = cand.split('-')
-        candates_f.append(pair[0])
-        candates_t.append(pair[1])
-
-    score_dict = dict()
-    for f, t in zip(candates_f, candates_t):
-        score = 0
-        neighbor_f = list(network.G.neighbors(f))
-        neighbor_t = list(network.G.neighbors(t))
-        for node in neighbor_f:
-            if node in neighbor_t:
-                score += 1
-        # score=(len(list(network.G.neighbors(f)))+len(list(network.G.neighbors(t))))/2
-        score_dict[f + '-' + t] = score
-        if (f + '-' + t) not in all_candate_dict.keys():
-            all_candate_dict[f + '-' + t] = score
-        else:
-            score_dict[f + '-' + t] += all_candate_dict[f + '-' + t]
-            all_candate_dict[f + '-' + t] += score
-
-    sorted_list = sorted(score_dict.items(), key=lambda item: item[1], reverse=False)
-
-    resutl_dict = dict()
-    for sortedx in sorted_list[:10]:
-        resutl_dict[sortedx[0]] = sortedx[1]
-    return resutl_dict
 
 def get_candate_dict(candate_pair,all_candate_dict):
     for pair in candate_pair:

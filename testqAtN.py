@@ -81,7 +81,6 @@ def test(ouput_filename_networkx,ouput_filename_networky,networkx_file, networky
 
     a=[0]*30
     b=[0]*30
-    # 读取自己的anchor文件
     f_networkx = open(ouput_filename_networkx + ".number_T")
     f_networky = open(ouput_filename_networky + ".number_T")
 
@@ -156,7 +155,6 @@ def change2tensor(list):
 
 def readData(file_name, pix, anchor, graph ,graph_another):
 
-    # 读取自己的twitter文件
     with open(file_name, 'r', encoding='gbk', errors='ignore') as f:
         for line in f:
             array_edge = line.split(" ", 1)
@@ -188,7 +186,6 @@ def readData(file_name, pix, anchor, graph ,graph_another):
 def getAnchors(network,anchor_file):
     answer_list = []
     file_name = anchor_file
-    # 读取自己的twitter文件
     with open(file_name, 'r', encoding='gbk', errors='ignore') as f:
         for line in f:
             array_edge = line

@@ -30,12 +30,10 @@ def graph_draw(G_communites):
 
 def get_noise_dist(network,all_walks):
     int_all_words = [network.vocab2int[w] for w in all_walks]
-    # 计算单词频次
     int_word_counts = Counter(int_all_words)
     total_count = len(int_all_words)
     word_freqs = {w: c / total_count for w, c in int_word_counts.items()}
 
-    # 单词分布
     word_freqs = np.array(list(word_freqs.values()))
     unigram_dist = word_freqs / word_freqs.sum()
     noise_dist = torch.from_numpy(unigram_dist ** (0.75) / np.sum(unigram_dist ** (0.75)))

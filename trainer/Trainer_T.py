@@ -3,7 +3,7 @@ from model import *
 import random
 import torch.optim as optim
 import torch.nn as nn
-from trainer.MyLoss import NegativeSamplingLoss,TripCenterLoss_margin
+from trainer.MyLoss import NegativeSamplingLoss
 from model.EmbeddingModel import *
 import numpy as np
 from trainer.MyOptimizer import adam
@@ -51,9 +51,6 @@ class Trainer_T:
         model = self.model
         criterion = NegativeSamplingLoss()
         cos = nn.CosineEmbeddingLoss(margin=0)
-        center_criterion = TripCenterLoss_margin(num_classes=len(list(set(list(mark_pair.values())))), feat_dim=EMBEDDING_DIM,
-                                                 use_gpu=True, device=device)
-        optimizer_center = optim.Adam(center_criterion.parameters(), lr=0.0001, betas=(0.5, 0.999))
 
         # =======================================================================================
         noise_dist=self.noise_get(network.get_all_freq(),network).to(device)
