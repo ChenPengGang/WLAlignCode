@@ -19,10 +19,14 @@ The package contains the following folders and files:
 	- util4Mapping.py
 	- utils4ReadData.py
 - main.py: main code to run the whole algorithm
--testqAtN: test to compute the p@N.
+- testqAtN.py: test to compute the p@N.
 
 ## To run
 
 Simply run the main.py. Change dataset and ratio per demand.
 
 main.py --dataset ACM-DBLP --ratio 5
+
+Simply run the testqAtN.py to test p@N of the result. Change dataset and ratio per demand.
+
+testqAtN.py --dataset ACM-DBLP --ratio 5
