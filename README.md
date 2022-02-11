@@ -1,5 +1,5 @@
 # WLAlign
-Code for the paper "Weisfeiler-Lehman guided Representation Learning for User Alignment across Social Networks"
+Code for the paper "WL-Align: Weisfeiler-Lehman Relabeling for Aligning Social Networks via Regularized Representation Learning"
 
 ## Overview
 The package contains the following folders and files:
@@ -7,7 +7,7 @@ The package contains the following folders and files:
 	- ACM-DBLP
 	- Foursquare-Twitter
 	- phone-email
-	- MirrorNetwork:mirror network with perturbation from 0%-450%.
+	- MirrorNetwork:mirror network with perturbation from 0%-300%.
 - network: 
 	- network.py: used to record network data and the label changes
 - model:
@@ -19,7 +19,7 @@ The package contains the following folders and files:
 	- util4Mapping.py
 	- utils4ReadData.py
 - main.py: main code to run the whole algorithm
-- testqAtN.py: test to compute the p@N.
+- testpAtN.py: test to compute the p@N.
 
 ## Prerequisites
 
