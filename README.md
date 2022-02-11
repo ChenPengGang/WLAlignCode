@@ -24,7 +24,9 @@ The package contains the following folders and files:
 ## Prerequisites
 
 python 3.7
+
 torch >= 2.6.0
+
 networkx == 2.6.3
 
 ## To run
