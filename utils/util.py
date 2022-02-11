@@ -194,7 +194,6 @@ def readData(file_name, pix, anchor, graph ,graph_another):
 def getAnchors(network,anchor_file):
     answer_list = []
     file_name = anchor_file
-    # 读取自己的twitter文件
     with open(file_name, 'r', encoding='gbk', errors='ignore') as f:
         for line in f:
             array_edge = line
