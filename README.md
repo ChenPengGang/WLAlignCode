@@ -21,6 +21,12 @@ The package contains the following folders and files:
 - main.py: main code to run the whole algorithm
 - testqAtN.py: test to compute the p@N.
 
+## Prerequisites
+
+python 3.7
+torch >= 2.6.0
+networkx == 2.6.3
+
 ## To run
 
 Simply run the main.py. Change dataset and ratio per demand.
