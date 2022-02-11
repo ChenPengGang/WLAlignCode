@@ -30,10 +30,11 @@ def graph_draw(G_communites):
 
 def get_noise_dist(network,all_walks):
     int_all_words = [network.vocab2int[w] for w in all_walks]
+    #Count node frequency
     int_word_counts = Counter(int_all_words)
     total_count = len(int_all_words)
     word_freqs = {w: c / total_count for w, c in int_word_counts.items()}
-
+    #node distribution
     word_freqs = np.array(list(word_freqs.values()))
     unigram_dist = word_freqs / word_freqs.sum()
     noise_dist = torch.from_numpy(unigram_dist ** (0.75) / np.sum(unigram_dist ** (0.75)))
@@ -57,7 +58,7 @@ def progress(percent,loss, width=50):
     if percent >= 100:
         percent = 100
 
-    show_str = ('[%%-%ds]' % width) % (int(width * percent / 100) * "#")
+    show_str = ('[%%-%ds]' % width) % (int(width * percent / 100) * "#") #concat string
     print('\r%s %d%% loss:%f' % (show_str, percent,loss), end='')
 
 def get_G_rank(G_anchor,nx_G):
@@ -194,6 +195,7 @@ def readData(file_name, pix, anchor, graph ,graph_another):
 def getAnchors(network,anchor_file):
     answer_list = []
     file_name = anchor_file
+    #read anchor file
     with open(file_name, 'r', encoding='gbk', errors='ignore') as f:
         for line in f:
             array_edge = line
