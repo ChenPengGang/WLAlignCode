@@ -57,7 +57,7 @@ def progress(percent,loss, width=50):
     if percent >= 100:
         percent = 100
 
-    show_str = ('[%%-%ds]' % width) % (int(width * percent / 100) * "#")  # 字符串拼接的嵌套使用
+    show_str = ('[%%-%ds]' % width) % (int(width * percent / 100) * "#")
     print('\r%s %d%% loss:%f' % (show_str, percent,loss), end='')
 
 def get_G_rank(G_anchor,nx_G):
