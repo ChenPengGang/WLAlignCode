@@ -35,6 +35,6 @@ Simply run the main.py. Change dataset and ratio per demand.
 
 main.py --dataset ACM-DBLP --ratio 5
 
-Simply run the testqAtN.py to test p@N of the result. Change dataset and ratio per demand.
+Simply run the testpAtN.py to test p@N of the result. Change dataset and ratio per demand.
 
 testqAtN.py --dataset ACM-DBLP --ratio 5
