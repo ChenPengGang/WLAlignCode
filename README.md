@@ -14,10 +14,10 @@ The package contains the following folders and files:
 	- AggregateModel.py: the model used to do label aggregate.
 	- EmbeddingModel.py: the model used to do Representation Learning
 - utils: 
-	- util.py
-	- util4Agg.py
-	- util4Mapping.py
-	- utils4ReadData.py
+	- util.py :contains commonly used file manipulation functions
+	- util4Agg.py :contains the functions required to get the label
+	- util4Mapping.py :contains the functions required for label mapping
+	- utils4ReadData.py :contains functions needed to read different datasets
 - main.py: main code to run the whole algorithm
 - testpAtN.py: test to compute the p@N.
 
