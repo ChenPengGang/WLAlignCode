@@ -1,5 +1,5 @@
 # WLAlign
-Code for the paper "WL-Align: Weisfeiler-Lehman Relabeling for Aligning Social Networks via Regularized Representation Learning"
+Code for the paper "WL-Align: Weisfeiler-Lehman Relabeling for Aligning Users Across Networks via Regularized Representation Learning"
 
 ## Overview
 The package contains the following folders and files:
